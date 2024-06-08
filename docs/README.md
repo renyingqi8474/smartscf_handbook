@@ -1,33 +1,22 @@
 ---
 home: true
-title: Home
-heroImage: https://vuejs.press/images/hero.png
+heroImage: /comet.png
+heroText: 彗星文库
+tagline: 繁星似海 熠熠生辉
 actions:
-  - text: Get Started
-    link: /getting-started.html
+  - text: 博客
+    link: https://blog.csdn.net/passwordgloo
     type: primary
-
-  - text: Introduction
-    link: https://vuejs.press/guide/introduction.html
+  - text: 关于
+    link: about.md
     type: secondary
-
 features:
-  - title: Simplicity First
-    details: Minimal setup with markdown-centered project structure helps you focus on writing.
-  - title: Vue-Powered
-    details: Enjoy the dev experience of Vue, use Vue components in markdown, and develop custom themes with Vue.
-  - title: Performant
-    details: VuePress generates pre-rendered static HTML for each page, and runs as an SPA once a page is loaded.
-  - title: Themes
-    details: Providing a default theme out of the box. You can also choose a community theme or create your own one.
-  - title: Plugins
-    details: Flexible plugin API, allowing plugins to provide lots of plug-and-play features for your site.
-  - title: Bundlers
-    details: Default bundler is Vite, while Webpack is also supported. Choose the one you like!
-
-footer: MIT Licensed | Copyright © 2018-present VuePress Community
+- title: 笔记
+  details: Markdown语言，简洁高效记录每一刻
+  link: https://www.baidu.com
+- title: 博客
+  details: 干净整洁的博客，易于存档文件
+- title: 文档
+  details: 在线个人文档，创作中意的文档
+footer: MIT Licensed | Copyright © 2020-present Passwordgloo
 ---
-
-This is the content of home page. Check [Home Page Docs][default-theme-home] for more details.
-
-[default-theme-home]: https://vuejs.press/reference/default-theme/frontmatter.html#home-page
