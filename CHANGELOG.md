@@ -1,3 +1,17 @@
+## [0.0.8](https://github.com/passwordgloo/comet/compare/v0.0.7...v0.0.8) (2024-06-08)
+
+
+### Features
+
+* **plugin:** 添加autoprefixer和tailwind css ([dff76b6](https://github.com/passwordgloo/comet/commit/dff76b6b5ced37a1716ed8051ae6bb6d1583b229))
+
+
+### BREAKING CHANGES
+
+* **plugin:** 添加作者介绍在about.md｜添加css代码测试autoprefixer效果
+
+
+
 ## [0.0.7](https://github.com/passwordgloo/comet/compare/v0.0.6...v0.0.7) (2024-06-08)
 
 

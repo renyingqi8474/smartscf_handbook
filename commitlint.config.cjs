@@ -44,7 +44,7 @@ module.exports = {
         emptyScopesAlias: 'empty',
         upperCaseSubject: false,
         markBreakingChangeMode: false,
-        allowBreakingChanges: ['feat', 'fix','style'],
+        allowBreakingChanges: ['feat', 'fix'],
         breaklineNumber: 100,
         breaklineChar: '|',
         skipQuestions: [],
