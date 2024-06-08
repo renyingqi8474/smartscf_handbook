@@ -1,4 +1,8 @@
-## 0.0.5 (2024-06-08)
+## [0.0.7](https://github.com/passwordgloo/comet/compare/v0.0.6...v0.0.7) (2024-06-08)
+
+
+
+## [0.0.6](https://github.com/passwordgloo/comet/compare/f0b8dfbca4fec8793aebae4b9461d4ea61639e99...v0.0.6) (2024-06-08)
 
 
 ### Bug Fixes
@@ -16,7 +20,7 @@
 
 * **docs:** 页面已经可以正常查看 ｜ 将来会添加本地搜索🔍
 
-无
+无 无
 * **plugin:** 尚未遇到
 
 
