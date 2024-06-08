@@ -4,7 +4,8 @@ import { viteBundler } from '@vuepress/bundler-vite'
 import { zhNavbar, enNavbar, } from './navbar/switch.js'
 import { zhSidebar, enSidebar, } from './sidebar/switch.js'
 import { searchProPlugin } from "vuepress-plugin-search-pro";
-
+import autoprefixer from 'autoprefixer'
+import tailwindcss from 'tailwindcss'
 
 export default defineUserConfig({
   lang: 'zh-CN',
@@ -31,6 +32,9 @@ export default defineUserConfig({
       indexContent: true,
       hotReload: true,
     }),
+    autoprefixer({
+      overrideBrowserslist: ['Chrome > 40', 'ff > 31', 'ie 11'],
+    })
   ],
 
   theme: defaultTheme({
@@ -53,5 +57,18 @@ export default defineUserConfig({
     },
   }),
 
-  bundler: viteBundler(),
+  bundler: viteBundler({
+    viteOptions: {
+      css: {
+        postcss: {
+          plugins: [
+            autoprefixer({
+              overrideBrowserslist: ['Chrome > 40', 'ff > 31', 'ie 11'],
+            }),
+            tailwindcss()
+          ]
+        }
+      }
+    }
+  }),
 })
