@@ -1,8 +1,8 @@
 <script setup>
 import { ref, onMounted, unref, onUnmounted } from "vue";
-
+import { Content } from 'vuepress/client'
 import Navbar from '@theme/VPNavbar.vue'
-import Page from '@theme/VPPage.vue'
+
 const props = defineProps({
   listBanner: {
     type: Array,
@@ -170,120 +170,13 @@ onUnmounted(() => {
       </span>
     </ul>
   </div>
-  <page/>
+  <main class="custom-banner">
+      <Content />
+</main>
 </template>
 
 
 
 <style lang="scss" scoped>
-ul {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.banner-container {
-  position: relative;
-
-  .fade-banner {
-    position: relative;
-    list-style: none;
-  }
-
-  .rotation-banner {
-    position: absolute;
-    opacity: 0;
-    // transition-duration: 3s;
-    transition-duration: 1.5s;
-    width: 100%;
-
-    &:first-child {
-      opacity: 1;
-    }
-  }
-
-  .banner-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    cursor: pointer;
-  }
-
-  .left-button {
-    position: absolute;
-    cursor: pointer;
-    top: 50%;
-    left: 25px;
-    width: 36px;
-    height: 36px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(31, 45, 61, 0.3);
-    border-radius: 50%;
-    opacity: 0;
-  }
-
-  .right-button {
-    position: absolute;
-    width: 36px;
-    height: 36px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    top: 50%;
-    right: 25px;
-    background-color: rgb(31, 45, 61, 0.3);
-    border-radius: 50%;
-    opacity: 0;
-  }
-
-  .icon {
-    height: 20px;
-    width: 20px;
-  }
-
-  .banner-indicator {
-    position: absolute;
-    left: 50%;
-    bottom: 15px;
-    transform: translateX(-50%);
-    cursor: pointer;
-    display: flex;
-
-    .barExternal {
-      height: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      .default-indicator {
-        width: 30px;
-        height: 2px;
-        background: rgba(221, 221, 221, 0.541);
-        display: block;
-        float: left;
-        margin-right: 10px;
-        // &:first-child {
-        //   background: #ffffff;
-        // }
-      }
-
-      .active-indicator {
-        background: #ffffff;
-      }
-    }
-  }
-
-  &:hover {
-    .left-button {
-      opacity: 1;
-    }
-
-    .right-button {
-      opacity: 1;
-    }
-  }
-}
+@import '../styles/banner';
 </style>

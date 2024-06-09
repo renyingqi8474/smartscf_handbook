@@ -11,12 +11,12 @@ actions:
     link: about.md
     type: secondary
 features:
-- title: 笔记
+- title: 📒 文档
   details: Markdown语言，简洁高效记录每一刻
   link: https://www.baidu.com
-- title: 博客
-  details: 干净整洁的博客，易于存档文件
-- title: 文档
-  details: 在线个人文档，创作中意的文档
+- title: 🔍 搜索
+  details: 大文本本地全文搜索
+- title: ⚡️ 极速
+  details: Vite打包快速发布
 footer: MIT Licensed | Copyright © 2020-present Passwordgloo
 ---
