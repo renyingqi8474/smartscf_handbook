@@ -1,0 +1,289 @@
+<script setup>
+import { ref, onMounted, unref, onUnmounted } from "vue";
+
+import Navbar from '@theme/VPNavbar.vue'
+import Page from '@theme/VPPage.vue'
+const props = defineProps({
+  listBanner: {
+    type: Array,
+    default: () => [
+      {
+        item: "1",
+        index: 1,
+        img: '/1.jpg',
+        url: 'https://iglooblog.top'
+      },
+      {
+        item: "2",
+        index: 2,
+        img: '/2.jpg',
+        url:'https://doc.iglooblog.top'
+      },
+      {
+        item: "3",
+        index: 3,
+        img: '/3.png',
+        url:'https://code.iglooblog.top'
+      }
+    ]
+  },
+  //banner自动播放的间隔时间
+  interval: {
+    type: Number,
+    default: 3000
+  },
+  //是否自动播放banner
+  autoSwitch: {
+    type: Boolean,
+    default: false
+  },
+  //banner高度
+  setHeight: {
+    type: Number,
+    default: 600
+  }
+})
+
+let tiemr = ref(null);
+const switchIndex = ref(0);
+const rotationRef = ref();
+const indicatorRef = ref();
+const description = ref(null); //图片描述
+let height = unref(props.setHeight);
+
+//banner播放方式
+const addTimer = () => {
+  if (props.autoSwitch === true) {
+    //自动播放
+    tiemr = setInterval(() => {
+      switchBanner("right");
+    }, props.interval);
+  }
+};
+
+// 清除定时器
+const stopInterval = () => {
+  clearInterval(tiemr);
+};
+
+//banner文字提示（非必须）
+const switchDescription = () => {
+  if (props.listBanner) {
+    props.listBanner.map((item, index) => {
+      if (index === switchIndex.value) {
+        description.value = item.description;
+      }
+    });
+  }
+};
+
+//鼠标进入停止自动播放（非必须）
+const mouseenterEvent = () => {
+  stopInterval();
+  switchDescription();
+};
+
+//鼠标离开自动播放（非必须）
+const mouseleaveEvent = () => {
+  addTimer();
+};
+
+//上一张和下一张图片透明度切换
+const changePicture = (num) => {
+  for (let i of rotationRef.value) {
+    i.style.opacity = "0";
+  }
+  toBannerBar(num);
+  if (rotationRef.value.length !== 0) {
+    rotationRef.value[num].style.opacity = "1";
+  }
+};
+
+//底部小横条颜色切换
+const toBannerBar = (val) => {
+  for (let i of indicatorRef.value) {
+    i.style.backgroundColor = "rgba(221, 221, 221, 0.541)";
+  }
+  if (indicatorRef.value.length !== 0) {
+    indicatorRef.value[val].style.backgroundColor = "#ffffff";
+  }
+};
+
+//左右切换banner
+const switchBanner = (value) => {
+  if (value === "right") {
+    switchIndex.value++;
+    if (switchIndex.value === props.listBanner.length) {
+      switchIndex.value = 0;
+    }
+  } else {
+    switchIndex.value--;
+    if (switchIndex.value === -1) {
+      switchIndex.value = props.listBanner.length - 1;
+    }
+  }
+  changePicture(switchIndex.value);
+  switchDescription();
+};
+
+//底部横条切换banner
+const swatchIndicator = (value) => {
+  switchIndex.value = value;
+  changePicture(switchIndex.value);
+  switchDescription();
+};
+
+//banner链接跳转（（非必须）
+const bannerLink = () => {
+  if (props.listBanner) {
+    props.listBanner.map((item, index) => {
+      if (index === switchIndex.value && item.url !== "" && item.url !== null) {
+        window.location.href = item.url;
+      }
+    });
+  }
+};
+
+onMounted(() => {
+  addTimer();
+});
+onUnmounted(() => {
+  stopInterval();
+});   
+</script>
+
+<template>
+  <Navbar/>
+  <div class="banner-container" :style="{ height: height + 'px' }" @mouseenter="mouseenterEvent"
+    @mouseleave="mouseleaveEvent">
+    <ul class="fade-banner">
+      <li class="rotation-banner" ref="rotationRef" :style="{ height: height + 'px' }" v-for="(item, index) in listBanner"
+        :key="index">
+        <img class="banner-img" @click="bannerLink" :src="item.img" :title="description" />
+      </li>
+    </ul>
+    <span class="left-button" @click="switchBanner('left')"><img src="../public/left.webp" class="icon" /></span>
+    <span class="right-button" @click="switchBanner('right')"><img src="../public/right.webp" class="icon" /></span>
+    <ul class="banner-indicator">
+      <span v-for="index in listBanner.length" :key="index" class="barExternal" @click="swatchIndicator(index - 1)">
+        <li ref="indicatorRef" class="default-indicator" :class="{ 'active-indicator': index - 1 === 0 }"></li>
+      </span>
+    </ul>
+  </div>
+  <page/>
+</template>
+
+
+
+<style lang="scss" scoped>
+ul {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.banner-container {
+  position: relative;
+
+  .fade-banner {
+    position: relative;
+    list-style: none;
+  }
+
+  .rotation-banner {
+    position: absolute;
+    opacity: 0;
+    // transition-duration: 3s;
+    transition-duration: 1.5s;
+    width: 100%;
+
+    &:first-child {
+      opacity: 1;
+    }
+  }
+
+  .banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+  }
+
+  .left-button {
+    position: absolute;
+    cursor: pointer;
+    top: 50%;
+    left: 25px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(31, 45, 61, 0.3);
+    border-radius: 50%;
+    opacity: 0;
+  }
+
+  .right-button {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    top: 50%;
+    right: 25px;
+    background-color: rgb(31, 45, 61, 0.3);
+    border-radius: 50%;
+    opacity: 0;
+  }
+
+  .icon {
+    height: 20px;
+    width: 20px;
+  }
+
+  .banner-indicator {
+    position: absolute;
+    left: 50%;
+    bottom: 15px;
+    transform: translateX(-50%);
+    cursor: pointer;
+    display: flex;
+
+    .barExternal {
+      height: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .default-indicator {
+        width: 30px;
+        height: 2px;
+        background: rgba(221, 221, 221, 0.541);
+        display: block;
+        float: left;
+        margin-right: 10px;
+        // &:first-child {
+        //   background: #ffffff;
+        // }
+      }
+
+      .active-indicator {
+        background: #ffffff;
+      }
+    }
+  }
+
+  &:hover {
+    .left-button {
+      opacity: 1;
+    }
+
+    .right-button {
+      opacity: 1;
+    }
+  }
+}
+</style>

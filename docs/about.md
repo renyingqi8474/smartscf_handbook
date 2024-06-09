@@ -1,7 +1,6 @@
 ---
-sidebar: auto
+sidebar: heading
 ---
-
 # 了解我
 
 <div class="relative mt-2">
