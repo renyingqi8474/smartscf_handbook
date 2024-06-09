@@ -1,5 +1,5 @@
 ---
-sidebar: heading
+layout: banner
 ---
 # 了解我
 

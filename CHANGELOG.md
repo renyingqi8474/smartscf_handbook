@@ -1,3 +1,17 @@
+## [0.0.9](https://github.com/passwordgloo/comet/compare/v0.0.8...v0.0.9) (2024-06-09)
+
+
+### Features
+
+* **beautify:** 添加banner布局 ([916dd5e](https://github.com/passwordgloo/comet/commit/916dd5ef37994a00370e0f47acc1618e43f4ab2a))
+
+
+### BREAKING CHANGES
+
+* **beautify:** 卸载changeset/cli插件
+
+
+
 ## [0.0.8](https://github.com/passwordgloo/comet/compare/v0.0.7...v0.0.8) (2024-06-08)
 
 
