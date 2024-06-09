@@ -1,6 +1,6 @@
 {
   "name": "comet",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "large text doc local search",
   "license": "Mozilla Public License V2",
   "type": "module",
