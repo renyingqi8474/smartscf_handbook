@@ -15,8 +15,8 @@ export default defineUserConfig({
   locales: {
     '/': {
       selectLanguageName: '简体中文',
-      title: '彗星文档',
-      description: '繁星似海 熠熠生辉',
+      title: '言出法随',
+      description: '守法而弗变则悖，悖乱不可以持国',
     },
     '/en/': {
       selectLanguageName: 'English',
