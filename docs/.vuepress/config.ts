@@ -15,13 +15,8 @@ export default defineUserConfig({
   locales: {
     '/': {
       selectLanguageName: '简体中文',
-      title: '言出法随',
+      title: '航天智融',
       description: '守法而弗变则悖，悖乱不可以持国',
-    },
-    '/en/': {
-      selectLanguageName: 'English',
-      title: 'Comet documents',
-      description: 'my book',
     },
   },
 
